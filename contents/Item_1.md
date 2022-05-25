@@ -2,11 +2,10 @@
 ## 정적 팩터리 메서드란?
 정적 팩터리 메서드라는 말이 낯설게 느껴질 수도 있겠지만 사실은 꽤 친숙한 메서드일 것이다. **객체를 생성할 때, 생성자가 아니라 정적 Static 메서드를 사용하는 것**을 정적 팩토리 메서드라고 한다. 
 
-> 여기서 팩터리는 객체를 생성하는 역할을 분리하겠다는 의미로 [GoF 디자인 패턴]() 중 [팩토리 패턴]()에서 이름만 따왔을 뿐 연관성은 크게 없다.
+> 여기서 팩터리는 객체를 생성하는 역할을 분리하겠다는 의미로 [GoF 디자인 패턴]() 중 [팩토리 패턴]()에서 이름만 따왔을 뿐 크게 연관성은 없다.
 
 ### 예시 코드
-#### LocalTime 클래스의 of 메소드
-##### (1) 정적 팩토리 메서드
+#### (1) LocalTime 클래스의 of 메소드(Static 메서드)
 ```java
 public static LocalTime of(int hour, int minute) {
   ChronoField.HOUR_OF_DAY.checkValidValue((long)hour);
@@ -19,7 +18,7 @@ public static LocalTime of(int hour, int minute) {
 }
 
 ```
-##### (2) `hour`, `minutes`을 인자로 받은 뒤 `LocalTime` 객체(9시 30분)를 반환
+#### (2) `hour`, `minutes`을 인자로 받은 뒤 `LocalTime` 객체(9시 30분)를 반환
 ```java
 LocalTime openTime = LocalTime.of(9, 30);
 ```
