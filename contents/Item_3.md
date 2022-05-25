@@ -114,7 +114,7 @@ public class Singleton1{
     // private 생성자
     private Singleton1() { }
 
-    public void doSomething() { }
+    public void doSomething1() { }
 }
 ~~~
 실행문
@@ -189,7 +189,7 @@ true
 ## 하지만!!!
 ### 이 두 방식에는 치명적인 단점이 존재한다.
 ### 만약 이 방법들을 직렬화에 사용한다면, 역직력화 할 때 **새로운 인스턴스**가 생겨서 싱글턴이 아니게 되어 버린다.
-### 이것을 해결하려면 모든 인스턴스 필드를 직렬화 대상에서 **제외(transient)**한다 선언하고, **readResolve** 메서드를 제공해야 한다.
+### 이것을 해결하려면 모든 인스턴스 필드를 직렬화 대상에서 **제외**(transient)한다 선언하고, **readResolve** 메서드를 제공해야 한다.
 ### 하지만 이러한 노력을 들여 귀찮은 방식을 써서 해결하는 방법 대신, 열거타입을 사용하여 싱글턴을 사용하는 방법이 있다.
 
 <br>
@@ -198,7 +198,7 @@ true
 ~~~JAVA
 public enum Singleton3 {
     s3;
-    public void doSomething2() { }
+    public void doSomething3() { }
 }
 ~~~
 실행문
