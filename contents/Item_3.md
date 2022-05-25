@@ -27,6 +27,7 @@
 ### 일단 예를 들어서 계절 열거체를 만들어 보자.
 ![먼저 열거체 이름(Season)을 지정해 주고](./imgs/Item_3_HTU_enum_1.PNG)  
 
+### 먼저 열거체 이름(Season)을 지정해 주고
 ### 열거 상수를 선언해 주자.
 ~~~JAVA
 public enum Season {
