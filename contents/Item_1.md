@@ -7,7 +7,7 @@
 > 여기서 팩터리는 객체를 생성하는 역할을 분리하겠다는 의미로 [GoF 디자인 패턴]() 중 [팩토리 패턴]()에서 이름만 따왔을 뿐 크게 연관성은 없다.
 
 ### 🤓 예시 코드
-#### (1) LocalTime 클래스의 of 메소드(Static 메서드)
+#### (1) LocalTime 클래스의 of 메소드 (Static 메서드)
 
 ```java
 public static LocalTime of(int hour, int minute) {
@@ -41,12 +41,6 @@ LocalTime openTime = LocalTime.of(9, 30);
 #### 비교 1. 생성자
 
 ```java
-Public class Application {
-    public static void main(String[] args) {
-        Car car = new Car("현대");
-    }
-}
-
 class Car {
     private String brand;
 
@@ -56,17 +50,20 @@ class Car {
 }
 ```
 
+```java
+Public class Application {
+    public static void main(String[] args) {
+        Car car = new Car("현대");
+    }
+}
+
+```
 > 위와 같이 생성자로 Car 객체 생성할 때, 생성자의 내부 구조를 모르고 있다면 new 키워드만으로는 "현대"가 어떤 정보인지 이해하는 것이 어렵다.
 
 #### 비교 2. 정적 팩토리 메서드
 
-```java
-public class Application {
-    public static void main(String[] args) {
-        Car car = Car.brandOf("현대");
-    }
-}
 
+```java
 class Car {
     private String brand;
 
@@ -79,10 +76,18 @@ class Car {
     }
 }
 ```
-
+```java
+public class Application {
+    public static void main(String[] args) {
+        Car car = Car.brandOf("현대");
+    }
+}
+```
 > 반면 정적 팩토리 메서드로 객체를 생성하는 경우 메서드의 이름을 통해 직관적으로 객체에 대한 정보를 단번에 이해할 수 있다. 이처럼 정적 팩토리 메서드는 객체 생성 시 목적에 알맞은 이름을 표현함으로써 코드의 가독성이 좋아지는 효과가 있다.
 
 #### 두번째 : "호출할 때마다 인스턴스를 새로 생성할 필요가 없다."
+
+
 #### 세번째 : "하위 자료형 객체를 반환할 수 있다."
 #### 네번째 : "매개변수에 따라 다른 클래스의 객체를 반환할 수 있다."
 #### 다섯번째 : "작성 시점에 반환할 객체의 클래스가 없어도 된다."
