@@ -115,26 +115,47 @@ public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
 #### 첫번째 : "하위 클래스를 만들 수 없다."
 #### 두번째 : "방법을 찾는 것이 어렵다."
 #### 정적 팩터리 메서드 명명방식
-**of** : 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환하는 집계 메서드
-  > Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);
+**`of`** : 여러 매개변수를 받아 적합한 타입의 인스턴스를 반환하는 집계 메서드
+  > 
+  ```java 
+  Set<Rank> faceCards = EnumSet.of(JACK, QUEEN, KING);
+  ```
   
-**valueOf** : from과 of의 더 자세한 버전
-  > BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
+**`valueOf`** : `from`과 `of`의 더 자세한 버전
+  > 
+  ```java 
+  BigInteger prime = BigInteger.valueOf(Integer.MAX_VALUE);
+  ```
   
-**instace 혹은 getInstance** : (매개변수를 받는다면) 매개변수로 명시한 인스턴스를 반환하지만 같은 인스턴스임을 보장하지는 않는다.
-  > StackWalker luke = StackWalker.getInstance(options);
+**`instace` 혹은 `getInstance`** : (매개변수를 받는다면) 매개변수로 명시한 인스턴스를 반환하지만 같은 인스턴스임을 보장하지는 않는다.
+  > 
+  ```java 
+  StackWalker luke = StackWalker.getInstance(options);
+  ```
   
-**create 혹은 newInstance** : instance 혹은 getInstance와 같지만 매번 새로운 인스턴스를 생성해 반환함을 보장한다.
-  > Object newArray = Array.newInstance(classObject, arrayLen);
+**`create` 혹은 `newInstance`** : `instance` 혹은 `getInstance`와 같지만 매번 새로운 인스턴스를 생성해 반환함을 보장한다.
+  > 
+  ```java 
+  Object newArray = Array.newInstance(classObject, arrayLen);
+  ```
   
-**getType** : getInstance와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. Type은 팩터리 메서드가 반환할 객체의 타입이다.
-  > FileStore fs = files.getFileStore(path);
+**`getType`** : `getInstance`와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. `Type``은 팩터리 메서드가 반환할 객체의 타입이다.
+  > 
+  ```java 
+  FileStore fs = files.getFileStore(path);
+  ```
   
-**newType** : newInstance와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. Type은 팩터리 메서드가 반환할 객체의 타입이다.
-  > BufferedReader br = Files.newBufferedReader(path);
+**`newType`** : `newInstance`와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. `Type`은 팩터리 메서드가 반환할 객체의 타입이다.
+  > 
+  ```java 
+  BufferedReader br = Files.newBufferedReader(path);
+  ```
   
-**type** : getType과 newType의 간결한 버전
-  > List<Complaint> litany = Collections.list(legacyLitany);
+**`type`** : `getType`과 `newType`의 간결한 버전
+  > 
+  ```java 
+  List<Complaint> litany = Collections.list(legacyLitany);
+  ```
   
 
 ## 🙆‍♀️ 정리!
