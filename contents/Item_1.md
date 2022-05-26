@@ -139,7 +139,7 @@ public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
   Object newArray = Array.newInstance(classObject, arrayLen);
   ```
   
-**`getType`** : `getInstance`와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. `Type``은 팩터리 메서드가 반환할 객체의 타입이다.
+**`getType`** : `getInstance`와 같으나 생성할 클래스가 아닌 다른 클래스에 팩터리 메서드를 정의할 때 쓴다. `Type`은 팩터리 메서드가 반환할 객체의 타입이다.
   > 
   ```java 
   FileStore fs = files.getFileStore(path);
