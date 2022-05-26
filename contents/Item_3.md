@@ -124,7 +124,7 @@ public class SeasonEnum {
 <br>
 
 ## 싱글톤(Singleton)의 생성방법
-<span style="font-size:110%"; font-weight:normal>
+<span style="font-size:110%">
 싱글톤의 가장 일반적인 생성 방식은 두 가지가 있다. <br>
 두 방식 모두 생성자는<span style="font-weight:bold">private</span> 로 감춰두고, <br>
 인스턴스에 접근할 수 있는 유일한 수단으로 <span style="font-weight:bold">public static</span> 맴버를 하나 마련해 둔다.
