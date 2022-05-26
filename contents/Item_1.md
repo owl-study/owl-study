@@ -121,5 +121,6 @@ public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
  # 👼 Reference
  - https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/
  - https://7942yongdae.tistory.com/147
+ - https://devlog-wjdrbs96.tistory.com/256
  - https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1
  - https://coder-in-war.tistory.com/entry/Java-28-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C
