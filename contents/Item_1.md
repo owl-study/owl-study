@@ -41,10 +41,10 @@ LocalTime openTime = LocalTime.of(9, 30);
 #### 비교 1. 생성자
 
 ```java
-class Car {
+class Phone {
     private String brand;
 
-    public Car(String brand) {
+    public Phone(String brand) {
         this.brand = brand;
     }
 }
@@ -53,41 +53,58 @@ class Car {
 ```java
 Public class Application {
     public static void main(String[] args) {
-        Car car = new Car("현대");
+        Phone phone = new Phone("Samsung");
     }
 }
 
 ```
-> 위와 같이 생성자로 Car 객체 생성할 때, 생성자의 내부 구조를 모르고 있다면 new 키워드만으로는 "현대"가 어떤 정보인지 이해하는 것이 어렵다.
+> 위와 같이 생성자로 Phone 객체 생성할 때, 생성자의 내부 구조를 모르고 있다면 new 키워드만으로는 "Samsung" 어떤 정보인지 이해하는 것이 어렵다.
 
 #### 비교 2. 정적 팩토리 메서드
 
 
 ```java
-class Car {
+class Phone {
     private String brand;
 
-    private Car(String brand) {
+    private Phone(String brand) {
         this.brand = brand;
     }
     
-    public static Car brandOf(String brand) {
-        return new Car(brand);
+    public static Phone brandOf(String brand) {
+        return new Phone(brand);
     }
 }
 ```
 ```java
 public class Application {
     public static void main(String[] args) {
-        Car car = Car.brandOf("현대");
+        Phone phone = Phone.brandOf("Samsung");
     }
 }
 ```
 > 반면 정적 팩토리 메서드로 객체를 생성하는 경우 메서드의 이름을 통해 직관적으로 객체에 대한 정보를 단번에 이해할 수 있다. 이처럼 정적 팩토리 메서드는 객체 생성 시 목적에 알맞은 이름을 표현함으로써 코드의 가독성이 좋아지는 효과가 있다.
 
 #### 두번째 : "호출할 때마다 인스턴스를 새로 생성할 필요가 없다."
+인스턴스의 내부 값을 수정할 수 없는 클래스를 [불변 클래스]()라고 한다. 대표적인 불변 클래스 Boolean 처럼 자주 사용하는 인스턴스(`true`, `false`)의 개수가 정해져있다면 해당하는 숫자만큼 미리 인스턴스를 생성해놓고 조회(캐싱)하여 재활용하는 구조로 만들수 있다. 이렇게 정적 팩터리 메서드와 캐싱 구조를 함께 사용하면 매번 새로운 객체를 생성할 필요가 없어져 불필요한 객체 생성을 피할 수 있다. 특히나 규모가 커서 생성 비용도 큰 객체가 자주 요청되는 상황이라면 성능이 저하될 가능성이 있는데, 정적 팩토리 메서드를 사용하면 성능을 상당히 끌어올릴 수 있는 것이다. 
 
+#### 예시 코드
 
+```java
+public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
+    public static final Boolean TRUE = new Boolean(true);
+    public static final Boolean FALSE = new Boolean(false);
+    public static Boolean valueOf(boolean b) {
+        return (b ? TRUE : FALSE);
+    }
+}
+```
+
+> 위의 Boolean 클래스는 `TRUE`, `FALSE`를 상수로 정의해놓고 `valueOf()` 메소드에서 기본 타입인 boolean 값을 받아 Boolean 객체 참조로 변환해주고 있다. `valueOf()` 메소드는 객체를 아예 생성하지 않고 상수를 반환하는 것이다. 이렇게 인스턴스를 미리 만들어 놓거나 새로 생성한 인스턴스를 캐싱하여 재활용하는 식으로 불필요한 객체 생성을 피하고, 객체 생성 비용이 큰 객체가 자주 요청되는 상황에서 성능을 끌어올릴 수 있다.
+
+ 
+#### 더 나아가기
+이렇게 호출마다 인스턴스를 생성하는 것이 아니라, 같은 요청에 같은 인스턴스를 반환하는 방식으로 인스턴스의 생성과 파괴를 철저하게 통제하는 클래스를 [인스턴스 통제 클래스]() 라고 한다. 또 인스턴스가 단 하나뿐임을 보장하며 인스턴스를 통제하는 것은 [플라이웨이트 패턴]()의 근간이 된다.
 
 #### 세번째 : "하위 자료형 객체를 반환할 수 있다."
 #### 네번째 : "매개변수에 따라 다른 클래스의 객체를 반환할 수 있다."
@@ -104,3 +121,5 @@ public class Application {
  # 👼 Reference
  - https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/
  - https://7942yongdae.tistory.com/147
+ - https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1
+ - https://coder-in-war.tistory.com/entry/Java-28-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C
