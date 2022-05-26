@@ -216,15 +216,15 @@ true
 4. 정적 팩터리 메서드 참조를 Supplier로 사용할 수 있다.(호출한 곳으로 데이터를 리턴하는 역활을 한다.)
 </span>
 
-<br>
+<br><br>
 
 <span style="font-size:150%">하지만!!!</span> <br> <span style="font-size:140%">이 두 방식에는 치명적인 단점이 존재한다.</span> <br>
 <span style="font-size:110%; font-weight:normal">
 만약 이 방법들을 직렬화에 사용한다면, 역직력화 할 때 새로운 인스턴스가 생겨서 싱글턴이 아니게 되어 버린다. <br>
 이것을 해결하려면 모든 인스턴스 필드를 직렬화 대상에서 <span style="font-weight:bold">제외(transient)</span>한다 선언하고, <span style="font-weight:bold">readResolve</span> 메서드를 제공해야 한다. 
   
-<br><br>
-  
+<br>
+ 
 하지만 이러한 노력을 들여 귀찮은 방식을 써서 해결하는 방법 대신, 열거타입을 사용하여 싱글턴을 사용하는 방법이 있다.
 </span>
 
