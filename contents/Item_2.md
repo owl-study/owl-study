@@ -88,15 +88,15 @@
 1. 각 인자 의미 파악이 쉬워졌고, 복잡한 여러 생성자를 생성할 필요가 없다.
 
 ##### 단점
-1. 객체 하나를 만들려면 여러 메서드를 호출해야하고, 객체가 완전히 생성되기 전까지는 일관성(consistency)이 무너진 상태에 놓이게 된다.
+1. 객체 하나를 만들려면 여러 메서드를 호출해야하고, 객체가 완전히 생성되기 전까지는 **일관성(consistency)**이 무너진 상태에 놓이게 된다.
 
-✂️ 요약 : `setter로 인해 immutable Class(변경 불가 클래스) 생성이 불가능하다.`
+✂️ 요약 : `setter로 인해 **immutable Class(변경 불가 클래스)** 생성이 불가능하다.`
 
 ## ❓ 빌더 패턴(Builder Pattern) 이란?
 `점층적 생성자 패턴`의 안전성과 `자바빈즈 패턴`의 가독성을 모두 가지는 패턴이 빌더 패턴이다.
 클라이언트는 필수 매개변수만으로 생성자(또는 정적 팩터리)를 호출하여 빌더 객체를 얻는다.
-그리고 메서드 체이닝(method chaining)을 통해 선택 매개변수를 설정한다.
-### ⌨️ 예시코드
+
+### ⌨️ 예시코드 (1)
 ```java
 public Class NutritionFacts{
   private final int servingSize;
@@ -152,5 +152,84 @@ public Class NutritionFacts{
   } 
 }
 ```
+NutritionFacts 클래스는 불변이고, 모든 매개변수의 기본값들을 한곳에 모아 빌더의 세터 메서드를 통해 return this하여 연쇄적으로 호출 할 수 있다.
+연쇄적 호출하는 방식을 **메서드 체이닝(method chaining)** 또는 **플루언트 API(fluent API)**라고 한다.
 
+### ⌨️ 예시코드 (2)
+### Pizza 클래스
+```java
+public abstract class Pizza {
+  public enum Topping {HAM, MUSHROOM, ONION, PEPPER, SAUSAGE,}
+
+  final Set<Topping> toppings;
+
+  // 추상 빌더
+  abstract static class Builder<T extends Builder<T>>{ // 재귀적 타입 제한 (자신(자신의 하위)을 타입으로 지정)
+    EnumSet<Topping> toppings = EnumSet.noneOf(Topping.class);
+    
+    // 핵심
+    public T addTopping(Topping topping) {              // "T"를 Builder<T> 하면 return 타입으로 this 할 수 있다.
+        toppings.add(Objects.requireNonNull(topping));
+        return self();                                  // 상속 구조일 경우 만약 this 를 리턴하면 자기 자신이 된다.
+    }
+    
+     abstract Pizza build();
+    // 하위 클래스는 이 메서드를 재정의하여 "this"를 반환하도록 해야한다.
+    protected abstract T self();
+    
+  }
+  Pizza(Builder<?> builder) {
+    toppings = builder.toppings.clone();
+  }
+}
+```
+### NyPizza 클래스
+```java
+public class NyPizza extends Pizza {
+    public enum Size {SMALL, MEDIUM, LARGE}
+    private final Size size;
+
+    public static class Builder extends Pizza.Builder<NyPizza.Builder> {    // <Builder>는 Pizza 의 빌더가 아닌 NyPizza 의 빌더이다.
+        private final Size size;
+
+        public Builder(Size size) {
+            this.size = Objects.requireNonNull(size);
+        }
+
+        @Override
+        public NyPizza build() {
+            return new NyPizza(this);
+        }
+
+        @Override
+        protected Builder self() {
+            return this;
+        }
+    }
+
+    private NyPizza(Builder builder) {
+        super(builder);
+        size = builder.size;
+    }
+}
+```
+`빌더 패턴은 계층적으로 설계된 클래스와 함께 쓰기 좋다.`
+추상 클래스는 추상 빌더를 가지게 하고, 구체 클래스(concrete class)는 구체 빌더를 갖게 한다. 
+위 예제코드로 설명하자면, **NyPizza.Builder**는 **NyPizza**를 반환해야 한다.
+하위 클래스의 메서드가 상위 클래스의 메서드가 정의한 반환 타입이 아닌, 자신을 반환하는 기능을 **공변 반환 타이핑(covariant return typing)** 이라고 한다.
+
+### ❗ Concrete class란?
+```
+ 객체지향 관련 서적에 concrete class으로 표현되어 있는 것이 대부분 번역서에서 `구상 클래스`, 
+ `구현 클래스` 또는 `구체 클래스`로 번역되어 있어 의미가 혼돈이 될 수 있다.
+ 모든 연산에 대하여 구현되어 있는 클래스가 `concrete class`이다. 요약하자면, `추상 클래스가 아닌 클래스`를 concrete class 이다.
+ ```
+ [reference : What is the Concrete class in java](https://stackoverflow.com/questions/43224901/what-is-the-concrete-class-in-java)
+ 
+ 
+ 
+
+NyPizza 클래스는 Pizza 클래스로부터 상속 받았다. 
+하위 타입의 빌더들이 불편해진다. (builder 를 상속받은 경우)
+하위타입의 빌더들은 자기 자신을 return 해야하는데 Builder<T>로 했을 경우 상위타입의 Builder를 return 한다.
 
