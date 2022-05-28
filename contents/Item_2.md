@@ -219,17 +219,65 @@ public class NyPizza extends Pizza {
 하위 클래스의 메서드가 상위 클래스의 메서드가 정의한 반환 타입이 아닌, 자신을 반환하는 기능을 **공변 반환 타이핑(covariant return typing)** 이라고 한다.
 
 ### ❗ Concrete class란?
-```
  객체지향 관련 서적에 concrete class으로 표현되어 있는 것이 대부분 번역서에서 `구상 클래스`, 
  `구현 클래스` 또는 `구체 클래스`로 번역되어 있어 의미가 혼돈이 될 수 있다.
  모든 연산에 대하여 구현되어 있는 클래스가 `concrete class`이다. 요약하자면, `추상 클래스가 아닌 클래스`를 concrete class 이다.
- ```
+
  [reference : What is the Concrete class in java](https://stackoverflow.com/questions/43224901/what-is-the-concrete-class-in-java)
  
- 
- 
+### ❗ Objects.requireNonNull() 를 왜 쓸까?
+`Ojbects.requireNonNull()` 메서드는 이펙티브 자바에서 자주 볼 수 있다. 
+해당 메서드는 이름을 통해 어떤 역할을 하는지 쉽게 파악할 수 있는데, 이 메서드는 `메서드나 생성자의 파라미터 null 검증`을 위해 설계된 메서드 이다.
 
-NyPizza 클래스는 Pizza 클래스로부터 상속 받았다. 
-하위 타입의 빌더들이 불편해진다. (builder 를 상속받은 경우)
-하위타입의 빌더들은 자기 자신을 return 해야하는데 Builder<T>로 했을 경우 상위타입의 Builder를 return 한다.
+```java
+public static <T> T requireNonNull(T obj) {
+  if (obj == null)
+    throw new NullPointerException();
+  return obj;
+}
+```
+해당 메서드를 왜 쓰는지 궁금할 것이다. 왜냐면 참조 객체가 null일 경우 NPE(NullPointerException)이 나는 기능뿐이기 때문이다.
+이를 사용하는 이유는 다음과 같다.
+##### * explicity (명시성)
+##### * fail fast (빠른 실패)  - 가능한 빠르게 실패하고, 문제를 파악할 수 있다.
+
+###### explict
+### ⌨️ 예시코드
+
+```java
+public class A {
+  String name;
+}
+```
+```java
+public class B {
+  A a;
+  public B (A a) {
+    this.a = Objects.requireNonNull(a);
+  }
+}
+```
+위 코드와 같이 A를 참조하는 B가 있을 때, A가 null이 아니어야 함을 명시적으로 표현할 수 있다.
+
+###### fail-fast
+### ⌨️ 예시코드
+```java
+A a = null'
+B b = new B(a);     // 생성 시점에 바로 NPE 발생
+```
+
+```java
+public class C {
+  A a;
+  public C (A a) {
+    this.a = a;
+  }
+}
+```
+requireNonNull을 사용하지 않은 경우 바로 익셉션을 발생하지 않고 이후에 해당 객체가 사용될 때 NPE가 발생하게 된다.
+이는 시스템이 복잡해질 수록 장애를 발경하기 어렵게 만든다.
+
+[reference : Objects.requireNonNull](https://velog.io/@rockpago/Objects.requireNonNull)
+
+
 
