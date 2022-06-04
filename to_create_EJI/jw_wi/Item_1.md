@@ -28,7 +28,7 @@ public static LocalTime of(int hour, int minute) {
 LocalTime openTime = LocalTime.of(9, 30);
 ```
 
-`LocalTime`의 `of` 메소드처럼 생성자를 통해 직접 객체를 생성하는 것이 아니라 메서드로 객체를 생성하는 것을 **_정적 팩터리 메서드_** 라고 한다.
+`LocalTime`의 `of` 메소드처럼 생성자를 통해 직접 객체를 생성하는 것이 아니라 **_메서드로 객체를 생성하는 것_** 을 정적 팩터리 메서드 라고 한다.
 
 ## 🤔 왜 생성자 대신 정적 팩터리 메서드를 고려해야할까?
 ### 🖐️ 다섯가지 이유
@@ -108,8 +108,24 @@ public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
 
 #### 3️⃣ 세번째 : "하위 타입의 객체를 반환할 수 있다."
 생성자를 사용하여 객체를 생성하는 경우 객체의 클래스가 하나로 제한되지만, 정적 팩터리 메서드를 사용하면 원하는 객체를 리턴할 수 있다. 자바 다형성의 특징을 이용하여 높은 자유도와 유연성을 제공하는 것이다.
+#### 🤓 예시 코드
+```java
+public interface Customer {
+    static Customer VIP() {
+        return new VIP();
+    }
 
+    static Customer MVP() {
+        return new MVP();
+    }
+}
 
+class VIP implements Customer {
+}
+
+class MVP implements Customer {
+}
+```
 #### 4️⃣ 네번째 : "매개변수에 따라 다른 클래스의 객체를 반환할 수 있다."
 #### 5️⃣ 다섯번째 : "작성 시점에 반환할 객체의 클래스가 없어도 된다."
 
