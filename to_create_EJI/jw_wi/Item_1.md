@@ -107,7 +107,7 @@ public final class Boolean implements java.io.Serializable,Comparable<Boolean> {
 이렇게 호출마다 인스턴스를 생성하는 것이 아니라, 같은 요청에 같은 인스턴스를 반환하는 방식으로 인스턴스의 생성과 파괴를 철저하게 통제하는 클래스를 [인스턴스 통제 클래스]() 라고 한다. 또 인스턴스가 단 하나뿐임을 보장하며 인스턴스를 통제하는 것은 [플라이웨이트 패턴]()의 근간이 된다.
 
 #### 3️⃣ 세번째 : "하위 타입의 객체를 반환할 수 있다."
-생성자를 사용하여 객체를 생성하는 경우 객체의 클래스가 하나로 제한되지만, 정적 팩터리 메서드를 사용하면 원하는 객체를 리턴할 수 있다. 자바 다형성의 특징을 이용하여 높은 자유도와 유연성을 제공하는 것이다.
+생성자를 사용하여 객체를 생성하는 경우 객체의 클래스가 하나로 제한되지만, 정적 팩터리 메서드를 사용하면 원하는 객체를 리턴할 수 있다. 자바 다형성의 특징을 이용하여 높은 자유도와 유연성을 제공하는 것이다. 인터페이스를 구현하고 있는 클래스를 노출시키지 않을 수 있으니 사용자 입장에서도 반환 된 클래스가 어떤 클래스인지 굳이 찾아보지 않아도 되는 장점까지 있다.
 #### 🤓 예시 코드
 ```java
 public interface Customer {
@@ -186,3 +186,4 @@ class MVP implements Customer {
  - https://devlog-wjdrbs96.tistory.com/256
  - https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1
  - https://coder-in-war.tistory.com/entry/Java-28-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C
+ - https://hudi.blog/effective-java-static-factory-method/
