@@ -362,27 +362,27 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
 
 ---
 
-###### [[1]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#2%EF%B8%8F%E2%83%A3-%EB%91%90%EB%B2%88%EC%A7%B8--%ED%98%B8%EC%B6%9C%ED%95%A0-%EB%95%8C%EB%A7%88%EB%8B%A4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%A5%BC-%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%A0-%ED%95%84%EC%9A%94%EA%B0%80-%EC%97%86%EB%8B%A4) GoF 디자인 패턴
+###### [[1]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%9E%80) GoF 디자인 패턴
 <디자인 패턴>(Design Patterns, ISBN 0-201-63361-2)은 소프트웨어 설계에 있어 공통된 문제들에 대한 표준적인 해법과 작명법을 제안한 책이다. 
 
 책의 첫 번째 반절은 다양한 디자인 패턴의 정의에 할애하고 있고, 나머지 반절은 실제적으로 유용한 디자인 패턴들을 나열하고 있다. 책의 예제들은 객체지향적인 언어인 C++과 스몰토크로 제시되고 있다.
 
-##### [2] 팩토리 패턴
+##### [[2]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%9E%80) 팩토리 패턴
 팩토리 메서드 패턴(Factory method pattern)은 부모 클래스에서 알려지지 않은 구체 클래스를 생성하는 패턴이며, 자식 클래스가 어떤 객체를 생성할지를 결정하도록 하는 패턴이기도 하다. 
 
 ##### [[3]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#2%EF%B8%8F%E2%83%A3-%EB%91%90%EB%B2%88%EC%A7%B8--%ED%98%B8%EC%B6%9C%ED%95%A0-%EB%95%8C%EB%A7%88%EB%8B%A4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%A5%BC-%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%A0-%ED%95%84%EC%9A%94%EA%B0%80-%EC%97%86%EB%8B%A4) 불변 클래스
 불변 객체란 객체 생성 이후 내부의 상태가 변하지 않는 객체이다. 불변 객체는 read-only 메서드만을 제공하며, 객체의 내부 상태를 제공하는 메서드를 제공하지 않거나 방어적 복사(defensive-copy)를 통해 제공한다. Java의 대표적인 불변 객체로는 String이 있다.
 
-###### [4] 플라이웨이트 패턴 
+###### [[4]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#%EF%B8%8F-%EB%8D%94-%EB%82%98%EC%95%84%EA%B0%80%EA%B8%B0) 플라이웨이트 패턴 
 어떤 클래스의 인스턴스 한 개만 가지고 여러 개의 "가상 인스턴스"를 제공하고 싶을 때 사용하는 패턴이다. 즉, 인스턴스를 가능한 대로 공유시켜 쓸데없이 `new` 연산자를 통한 메모리 낭비를 줄이는 방식이다. 
 
-###### [5] 컴포지션
+###### [[5]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#1%EF%B8%8F%E2%83%A3-%EC%B2%AB%EB%B2%88%EC%A7%B8--%ED%95%98%EC%9C%84-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%97%86%EB%8B%A4) 컴포지션
 
 다른 객체의 인스턴스를 자신의 인스턴스 변수로 포함해서 메서드를 호출하는 기법이다. 
 
 해당 인스턴스의 내부 구현이 바뀌더라도 영향을 받지 않는 장점이 있다. 또한, 다른 객체의 인스턴스이므로 인터페이스를 이용하면 Type을 바꿀 수 있다.
 
-###### [6] 불변 객체 타입
+###### [[6]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#1%EF%B8%8F%E2%83%A3-%EC%B2%AB%EB%B2%88%EC%A7%B8--%ED%95%98%EC%9C%84-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%97%86%EB%8B%A4) 불변 객체 타입
 불변 객체(Immutable)란 생성 후 그 상태를 변결 할 수 없는 객체를 말한다. 반대 개념으로는 가변(mutable) 객체로 새성 후에도 상태를 변경 할 수 있다. 
 
 불변객체의 초기 상태는 대개 생성 시에 결정되지만 객체가 실제로 사용되는 순간까지 늦추기도 한다.
