@@ -336,7 +336,7 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
  - [정적 팩토리 메서드(Static Factory Method)는 왜 사용할까? by 2기_보스독](https://tecoble.techcourse.co.kr/post/2020-05-26-static-factory-method/)
  - [Java - 정적 팩토리 메서드의 정의와 네이밍 컨벤션 by 프로그래머 YD](https://7942yongdae.tistory.com/147)
  - [[Effective Java] 아이템1: 생성자 대신 정적 팩토리 메소드를 고려하라 by Gyun's 개발일지](https://devlog-wjdrbs96.tistory.com/256)
- - [1. 객체 생성과 파괴 by Catsbi;s DLog](https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1)
+ - [1. 객체 생성과 파괴 by Catsbi's DLog](https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1)
  - [[Java] 28. 정적 팩토리 메서드?! by kim.svadoz](https://coder-in-war.tistory.com/entry/Java-28-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C)
  - [생성자 대신 정적 팩터리 메서드를 고려하라 by Hudi.blog](https://hudi.blog/effective-java-static-factory-method/)
  - [[이펙티브 자바] 아이템1. 생성자 대신 정적 팩터리 메서드를 고려하라 by 성건희](https://web2eye.tistory.com/220#%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C-%EB%8B%A8%EC%A0%90)
