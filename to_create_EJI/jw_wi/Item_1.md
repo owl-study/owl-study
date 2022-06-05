@@ -137,7 +137,7 @@ class Customer {
             return new VIP();
         }
 
-        if (price < 1000000) {
+        if (totalPrice < 1000000) {
             return new MVP();
         }
 
