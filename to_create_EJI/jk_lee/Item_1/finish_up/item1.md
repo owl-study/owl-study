@@ -362,7 +362,7 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
 
 ---
 
-###### [1] GoF 디자인 패턴
+###### [[1]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#2%EF%B8%8F%E2%83%A3-%EB%91%90%EB%B2%88%EC%A7%B8--%ED%98%B8%EC%B6%9C%ED%95%A0-%EB%95%8C%EB%A7%88%EB%8B%A4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%A5%BC-%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%A0-%ED%95%84%EC%9A%94%EA%B0%80-%EC%97%86%EB%8B%A4) GoF 디자인 패턴
 <디자인 패턴>(Design Patterns, ISBN 0-201-63361-2)은 소프트웨어 설계에 있어 공통된 문제들에 대한 표준적인 해법과 작명법을 제안한 책이다. 
 
 책의 첫 번째 반절은 다양한 디자인 패턴의 정의에 할애하고 있고, 나머지 반절은 실제적으로 유용한 디자인 패턴들을 나열하고 있다. 책의 예제들은 객체지향적인 언어인 C++과 스몰토크로 제시되고 있다.
