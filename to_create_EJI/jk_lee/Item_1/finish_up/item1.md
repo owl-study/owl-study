@@ -370,7 +370,7 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
 ##### [2] 팩토리 패턴
 팩토리 메서드 패턴(Factory method pattern)은 부모 클래스에서 알려지지 않은 구체 클래스를 생성하는 패턴이며, 자식 클래스가 어떤 객체를 생성할지를 결정하도록 하는 패턴이기도 하다. 
 
-##### [3] 불변 클래스
+##### [[3]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#2%EF%B8%8F%E2%83%A3-%EB%91%90%EB%B2%88%EC%A7%B8--%ED%98%B8%EC%B6%9C%ED%95%A0-%EB%95%8C%EB%A7%88%EB%8B%A4-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4%EB%A5%BC-%EC%83%88%EB%A1%9C-%EC%83%9D%EC%84%B1%ED%95%A0-%ED%95%84%EC%9A%94%EA%B0%80-%EC%97%86%EB%8B%A4) 불변 클래스
 불변 객체란 객체 생성 이후 내부의 상태가 변하지 않는 객체이다. 불변 객체는 read-only 메서드만을 제공하며, 객체의 내부 상태를 제공하는 메서드를 제공하지 않거나 방어적 복사(defensive-copy)를 통해 제공한다. Java의 대표적인 불변 객체로는 String이 있다.
 
 ###### [4] 플라이웨이트 패턴 
