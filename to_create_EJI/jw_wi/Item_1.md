@@ -85,6 +85,50 @@ public class Application {
 ```
 > 반면 정적 팩토리 메서드로 객체를 생성하는 경우 메서드의 이름을 통해 직관적으로 객체에 대한 정보를 단번에 이해할 수 있다. 이처럼 정적 팩토리 메서드는 객체 생성 시 목적에 알맞은 이름을 표현함으로써 코드의 가독성이 좋아지는 효과가 있다.
 
+또, 같은 시그니처를 가지는 생성자 여러 개가 필요할 때에도 **정적 팩터리 메서드**를 이용할 수 있다.
+
+#### 🤓 비교 1. 생성자
+
+```JAVA
+public class Student {
+    private String name;
+    private String id;
+
+    // 컴파일 오류 발생
+    public Student(String name){
+        this.name = name;
+    }
+
+    public Student(String id){
+        this.id = id;
+    }
+}
+```
+
+> 일반적인 생성자 방식으로는 매개변수의 이름만 다른 두 개의 생성자를 만들 수 없다.
+
+#### 🤓 비교 2. 정적 팩토리 메서드
+
+```JAVA
+public class StaticStudent {
+    private String name;
+    private String id;
+
+    public static StaticStudent name(String name){
+        StaticStudent staticStudent = new StaticStudent();
+        staticStudent.name = name;
+        return staticStudent;
+    }
+
+    public static StaticStudent id(String id){
+        StaticStudent staticStudent = new StaticStudent();
+        staticStudent.id = id;
+        return staticStudent;
+    }
+}
+```
+> 하지만 정적 팩터리 메서드로 바꿔준다면 같은 시그니처를 가지는 생성자 여러개를 만들 수 있다.
+
 #### 2️⃣ 두번째 : "호출할 때마다 인스턴스를 새로 생성할 필요가 없다."
 인스턴스의 내부 값을 수정할 수 없는 클래스를 [불변 클래스]()라고 한다. 대표적인 불변 클래스 Boolean 처럼 자주 사용하는 인스턴스(`true`, `false`)의 개수가 정해져있다면 해당하는 숫자만큼 미리 인스턴스를 생성해놓고 조회(캐싱)하여 재활용하는 구조로 만들수 있다. 이렇게 정적 팩터리 메서드와 캐싱 구조를 함께 사용하면 매번 새로운 객체를 생성할 필요가 없어져 불필요한 객체 생성을 피할 수 있다. 특히나 **규모가 커서 생성 비용도 큰 객체가 자주 요청되는 상황이라면** 성능이 저하될 가능성이 있는데, 정적 팩토리 메서드를 사용하면 **성능을 상당히 끌어올릴 수 있는 것이다.**
 
