@@ -354,7 +354,7 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
  - [[Effective Java] 아이템1: 생성자 대신 정적 팩토리 메소드를 고려하라 by Gyun's 개발일지](https://devlog-wjdrbs96.tistory.com/256)
  - [1. 객체 생성과 파괴 by Catsbi;s DLog](https://catsbi.oopy.io/d7f3a636-b613-453b-91c7-655d71fda2b1)
  - [[Java] 28. 정적 팩토리 메서드?! by kim.svadoz](https://coder-in-war.tistory.com/entry/Java-28-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C)
- - https://hudi.blog/effective-java-static-factory-metho/
+ - [생성자 대신 정적 팩터리 메서드를 고려하라 by Hudi.blog](https://hudi.blog/effective-java-static-factory-method/)
  - [[이펙티브 자바] 아이템1. 생성자 대신 정적 팩터리 메서드를 고려하라 by 성건희](https://web2eye.tistory.com/220#%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C-%EB%8B%A8%EC%A0%90)
  - [아이템 [1] - 생성자 대신 정적 팩터리 메서드를 고려하라 by 오늘의 개발](https://a1010100z.tistory.com/entry/%EC%95%84%EC%9D%B4%ED%85%9C-1-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%8C%80%EC%8B%A0-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%A5%BC-%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC)
 
@@ -382,7 +382,7 @@ java doc에서 클래스의 생성자는 잘 표시되어있어 쉽게 찾을 �
 
 해당 인스턴스의 내부 구현이 바뀌더라도 영향을 받지 않는 장점이 있다. 또한, 다른 객체의 인스턴스이므로 인터페이스를 이용하면 Type을 바꿀 수 있다.
 
-###### [[6] 불변 객체 타입](https://github.com/leejk0924/owl-study/edit/main/to_create_EJI/jk_lee/Item_1/finish_up/item1.md#1%EF%B8%8F%E2%83%A3-%EC%B2%AB%EB%B2%88%EC%A7%B8--%ED%95%98%EC%9C%84-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A5%BC-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%97%86%EB%8B%A4)
+###### [6] 불변 객체 타입
 불변 객체(Immutable)란 생성 후 그 상태를 변결 할 수 없는 객체를 말한다. 반대 개념으로는 가변(mutable) 객체로 새성 후에도 상태를 변경 할 수 있다. 
 
 불변객체의 초기 상태는 대개 생성 시에 결정되지만 객체가 실제로 사용되는 순간까지 늦추기도 한다.
