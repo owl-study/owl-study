@@ -254,7 +254,25 @@ effectiveJava.item1.returnParameter.Walk
 <br>
 
 ### 5) 정적 팩터리 메서드 작성 시점에 반환할 객체의 클래스가 없어도 된다.
+  
 
+~~~JAVA
+import java.util.ArrayList; 
+import java.util.List; 
+
+public class TicketStore { 
+	/** TicketSeller는 인터페이스이고 구현체가 없음에도 아래와 같은 메서드 작성이 가능하다.**/ 
+	public static List<TicketSeller> getSellers(){ 
+		return new ArrayList<>(); 
+	} 
+}
+~~~
+예시출처 : [https://a1010100z.tistory.com](https://a1010100z.tistory.com/entry/%EC%95%84%EC%9D%B4%ED%85%9C-1-%EC%83%9D%EC%84%B1%EC%9E%90-%EB%8C%80%EC%8B%A0-%EC%A0%95%EC%A0%81-%ED%8C%A9%ED%84%B0%EB%A6%AC-%EB%A9%94%EC%84%9C%EB%93%9C%EB%A5%BC-%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC)
+
+반환값이 인터페이스여도 상관이 없다!  
+그리고 정적팩터리 메서드의 변경 없이 구현체를 바꿔끼울 수 있어서 코드가 유연해진다.  
+이렇게 인터페이스나 클래스가 만들어 지는 시점에서 하위 타입의 클래스가 **존재 하지 않아도**, 나중에 만들 클래스가 기존의 인터페이스나 클래스를 상속 받는 상황이면 언제든지 의존성을 주입 받아서 **사용이 가능**하다.  
+  
 한마디로 클라이언트를 구현체로부터 분리해준다고 말할 수 있다.  
 이게 무슨소리냐 하면 JDBC의 서비스 접근 API인 DriverManager.getConnection()을 예로 들을 수 있다.  
 우리가 일반적으로 JDBC에서 Connection 을 가져오는 코드는 다음과 같다.  
@@ -269,7 +287,6 @@ conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/~/test", "sa", "");
 여기 2단계인 getConnection() 에서 반환되는 구현체는 DBMS 의 종류에 따라 달라진다.  
 클라이언트는 세부적인 구현 내용을 몰라도 서비스를 이용 할 수 있다.  
 Connection 타입은 인터페이스이며, 실제로 구현하는 클래스가 존재하지 않아도 되고, 구현하는 클래스가 계속 추가될 수도 있다.
-
 ---
 
 <br>
