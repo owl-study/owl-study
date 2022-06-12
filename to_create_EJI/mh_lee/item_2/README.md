@@ -54,6 +54,16 @@ public class Member {
 }
 ~~~
 
+### 점층적 생성자 패턴의 장점  
+- 컴파일 안정성이 있다.  
+  필수 매개변수가 여러개가 있을 시 하나라도 누락되면 컴파일 단계에서 에러검출을 해준다.
+  
+### 점층적 생성자 패턴의 단점
+- 각 값의 의미파악이 어렵다.
+- 매개변수가 많아지면 코드를 작성하거나, 읽기 어렵다
+- 같은 타입의 매개변수가 연달아 들어가면 컴파일 에러가 발생하지 않기 때문에 런타임 에러가 발생할 수 있다.
+
+---
 
 <br>
 
@@ -90,6 +100,14 @@ public class Member {
 }
 ~~~
 
+### 자바빈즈 패턴의 장점
+- 인스턴스를 만들기 쉽다.
+- 코드가 읽기 쉬워진다.
+### 자바빈즈 패턴의 단점
+- 객체 하나를 생성하기 위해 메서드 여러개를 호출해야 한다.
+- 클래스를 불변으로 만들 수 없다. (객체의 일관성이 무너진다)
+
+---
 
 <br>
 
@@ -214,3 +232,70 @@ public class MainBuilder {
 Member{id='test1234', name='정재원', password='test5678', age=20, gender='', address='', job=''}
 Member{id='addmore1234', name='lee', password='add1234', age=34, gender='male', address='서울특별시 관악구 난우길 4', job='개발자'}
 ~~~
+
+<BR>
+
+또한 Lombok 을 이용하면 쉽게 Builder패턴을 이용할 수 있다.
+
+~~~JAVA
+import lombok.Builder;
+import lombok.ToString;
+
+@Builder
+@ToString
+public class LombokMember {
+
+    // 필수 매개변수
+    private String id;
+    private String name;
+    private String password;
+    private int age;
+    // 선택 매개변수
+    private String gender;
+    private String address;
+    private String job;
+
+}
+~~~
+
+실행문
+
+~~~JAVA
+
+public class MainBuilder {
+
+  public static void main(String[] args) {
+
+    // 롬복 빌더 어노테이션을 이용해 인스턴스 생성하기
+    LombokMember kim = LombokMember.builder()
+        .id("kimMaeMi")
+        .name("매미킴")
+        .password("kmm1234")
+        .age(17)
+        .gender("male")
+        .address("서울역")
+        .job("개그맨")
+        .build();
+
+    System.out.println(kim.toString());
+  }
+}
+~~~
+
+결과
+
+~~~
+LombokMember{id='kimMaeMi', name='매미킴', password='kmm1234', age=17, gender='male', address='서울역', job='개그맨'}
+~~~ 
+
+### 빌더패턴의 장점
+- 각 파라미터가 어떤 값이 들어가는지 한눈에 보인다.
+- 객체의 일관성을 부여할 수 있다.
+- 자바빈즈 패턴보다 훨씬 안전하다.
+- 계층적으로 설계된 클래스와 함께 쓰기 좋다.
+- 하위 클래스의 메서드가 상위 클래스의 메서드가 정의한 반환 타입이 아닌, 그 하위 타입을 반환할 수 있어서 클라이언트가 형변환에 신경쓰지 않고 빌더를 사용 가능하다. (공변 반환 타이핑)
+### 빌더패턴의 단점
+- 객체를 만들려면 빌더부터 만들어 줘야 한다.
+- 코드가 장황해서 매개변수가 4개 이상이어야 값어치를 한다.
+- Lombok의 @Builder 어노테이션을 이용하면 필수 매개변수 여러개를 설정할 수 없다.
+- 필수 매개변수를 다 설정해 주지 않아도, 컴파일 단계에서 에러검출이 안된다.
