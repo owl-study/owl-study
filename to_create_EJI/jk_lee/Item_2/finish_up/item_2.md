@@ -2,9 +2,9 @@
 ## ❓ 빌더란?
 
 ### 대표적인 객체 생성 디자인패턴
-> - [점층적 생성자(Telescoping Constructor) 패턴]()
-> - [자바 빈(JavaBean) 패턴]()
-> - [빌더(Builder) 패턴]()
+> - [점층적 생성자(Telescoping Constructor) 패턴](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_2/finish_up/item_2.md#%EC%A0%90%EC%B8%B5%EC%A0%81-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%8C%A8%ED%84%B4)
+> - [자바 빈(JavaBean) 패턴](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_2/finish_up/item_2.md#%EC%9E%90%EB%B0%94-%EB%B9%88%EC%A6%88-%ED%8C%A8%ED%84%B4)
+> - [빌더(Builder) 패턴](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_2/finish_up/item_2.md#%EB%B9%8C%EB%8D%94-%ED%8C%A8%ED%84%B4)
 
 생성자(Constructor)로 인스턴스를 생성할 때 겪는 불편함에 대한 방안으로 고안 된 디자인 패턴이다. Java에서 클래스를 객체화하는 패턴으로는 `점층적 생성자 패턴`과 `자바 빈즈 패턴`, `빌더 패턴`이 존재하는데, 점층적 생성자 패턴이 가진 안전성과 자바 빈즈 패턴의 가독성이 합쳐진 것이 빌더 패턴이다. 빌더 패턴에 대해서 더 자세히 알아보기 위해서는 결국 나머지 두 패턴을 이해하고 비교해보아야 한다.
 
@@ -64,7 +64,7 @@ ex) NutritionFacts cocaCola = new NutritionFacts(240, 8, 100, 0, 35, 27);
 ## 자바 빈즈 패턴
 가독성이 떨어지는 점층적 생성자 패턴을 보완하여 각 매개변수를 setter 메서드를 호출하여 값을 설정하는 방식이다. 하지만 자바빈즈 패턴도 문제점이 있다. 우선 불변객체로 만들 수 없고, 한 객체를 완성시키기 위해서는 여러 번 메서드를 호출해야한다. 이는 완전히 생성되기 전까지는 일관성을 보증해줄 수 없다. 만약 완전히 생성되지 않았는데 객체를 호출한다면 의도하지 않았던 유효성 없는 값이 나올 수도 있다.
 
-이를 보완하기 위해서 freeze()를 만들어서 객체가 완전히 생성되기 전까지는 호출이 불가능하게 막고 완전히 생성된다면 freeze()를 통해서 불변객체로 만들어주고 호출 가능하게 해주는 방법이 있다. 하지만 이 방법은 다루기 어렵고 프로그래머가 freeze()를 확실히 호출해줬는지를 컴파일러가 보증해줄 수 없기 때문에 오류에 취약하다.
+이를 보완하기 위해서 [freeze()](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_2/finish_up/item_2.md#1-freeze)를 만들어서 객체가 완전히 생성되기 전까지는 호출이 불가능하게 막고 완전히 생성된다면 freeze()를 통해서 불변객체로 만들어주고 호출 가능하게 해주는 방법이 있다. 하지만 이 방법은 다루기 어렵고 프로그래머가 freeze()를 확실히 호출해줬는지를 컴파일러가 보증해줄 수 없기 때문에 오류에 취약하다.
 
 ~~~java
 public class NutritionFacts {
@@ -341,6 +341,6 @@ LombokMember{id='kimMaeMi', name='매미킴', password='kmm1234', age=17, gender
 - [생성자에 매개변수가 많다면 빌더를 고려하라 by wooky9633](https://velog.io/@wooky9633/%EC%83%9D%EC%84%B1%EC%9E%90%EC%97%90-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98%EA%B0%80-%EB%A7%8E%EB%8B%A4%EB%A9%B4-%EB%B9%8C%EB%8D%94%EB%A5%BC-%EA%B3%A0%EB%A0%A4%ED%95%98%EB%9D%BC)
 <hr>
 
-###### [[1]]() freeze()
+###### [[1]](https://github.com/leejk0924/owl-study/blob/main/to_create_EJI/jk_lee/Item_2/finish_up/item_2.md#%EC%9E%90%EB%B0%94-%EB%B9%88%EC%A6%88-%ED%8C%A8%ED%84%B4) freeze()
 자바스크립트(Javascript)의 Object.freeze() 함수는 객체 타입인 값에 freeze()를 사용하면 값을 변경 할 수 없는(immutable) 값으로 바꿀 수 있다. 즉 상수(constant)처럼 변경할 수 없는 값이 된다. 값을 바꿀 수도 삭제할 수도 없다.
 참고로 const로 선언된 객체의 값이라도 내부 프로퍼티 및 메서드의 값을 변경할 수 있다. 하지만 freeze()를 사용할 경우 이런 참조 값의 내부 프로퍼티, 메서드도 값 변경이 불가능하게 된다. 즉 const만 사용하여 선언된 객체는 변경이 가능하지만, freeze()를 사용한 경우 변경이 불가능 하다.
