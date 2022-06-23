@@ -1,22 +1,5 @@
 # 아이템4. 인스턴스화를 막으려거든 private 생성자를 사용하라
 
-------------------------
-이 아이템에서 주요 내용
-1. 기본생성자
-2. 상속받으면 상위클래스가 호출됨
-3. AssertionError() 의 쓰임
-------------------------
-
-
-
-막는 방법 1 - 추상클래스 사용
-
-막는 방법 2 - private 생성자 사용
-
-막는 방법 3 - 그냥 문서화
-
-
-
 ## ❓ 정적 메서드 & 필드로만 구성된 클래스
 정적 메서드 & 정적 필드는 코드를 실행하기 전에 클래스의 인스턴스를 생성하지 않고 사용하는데 유용하다.
 
@@ -46,6 +29,8 @@ public abstract class Test {
 #### (2) private 생성자
 컴파일러가 기본생성자를 만드는 경우는 명시된 생성자가 없을 경우이기 때문에 private 생성자를 만들면 인스턴스화를 막을 수 있다. 하지만, 접근 제어자가 private이니 클래스 안에서 실수로 생성자를 호출할 수도 있기 때문에 AssertionError()를 작성한다.
 또한 접근제어가자 private으로 선언 했기 때문에 하위 클래스가 상위 클래스의 생성자에 접근을 막기도 한다.
+
+### 🤓 예시 코드
 ```java
 public abstract class Test {
     static void hello() {
@@ -58,11 +43,25 @@ public abstract class Test {
 ```
 #### (3) 문서화
 가장 좋은 방법이며 가장 쉬운 방법은 문서화 통하여 사용자가 올바르게 사용하도록 인도하는 것이다. 
+```java
+    /**
+     * 해당 정적 메서드를 사용할 경우 인스턴스화를 생성하지 않고 사용하시면 됩니다.
+     */
+public abstract class Test {
+    static void hello() {
+        System.out.println("hello");
+    }
+    private Test() {
+        throw new AssertionError();
+    }
+}
+
+```
 
 ## 🙆‍♀️ 아이템4의 주요 내용!
 1. 기본생성자
 2. 상속받을 경우 상위클래스를 호출
-3. AssertionError()
+3. AssertionError() 을 사용하여 실수로라도 생성하 호출을 막기
 
  # 👼 Reference
  - [아이템 4. 인스턴스화를 막으려거든 private 생성자를 사용하라 by 림딩동](https://limdingdong.tistory.com/19)
