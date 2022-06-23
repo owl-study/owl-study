@@ -61,7 +61,7 @@ public abstract class Test {
 ## 🙆‍♀️ 아이템4의 주요 내용!
 1. 기본생성자
 2. 상속받을 경우 상위클래스를 호출
-3. AssertionError() 을 사용하여 실수로라도 생성하 호출을 막기
+3. AssertionError()
 
  # 👼 Reference
  - [아이템 4. 인스턴스화를 막으려거든 private 생성자를 사용하라 by 림딩동](https://limdingdong.tistory.com/19)
@@ -75,3 +75,4 @@ public abstract class Test {
  
 
 ---
+
