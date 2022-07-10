@@ -9,6 +9,29 @@
 
 ## 불필요한 String 인스턴스 생성을 피하라.
 
+### new String으로 불필요한 객체를 생성하는 경우
+~~~java
+        String hello1 = "hello";
+        String hello2 = new String("hello");
+        String hello3 = "hello";
+~~~
+
+문자열 hello1, hello2, hello3은 모두 "hello" 라는 문자열을 갖게 되지만,  
+이 hello2가 참조하는 주소 값은 다르기 때문에 동일한 데이터에 대해 서로 다른 메모리를 할당하는 낭비가 발생한다
+
+![](/contents/imgs/item_6_StringPool.png)
+
+그래서 문자열을 선언할 때는 new 키워드를 쓸 것이 아니라 리터럴로 선언해야 한다.
+아래는 위 코드에 대한 결과값이다.
+
+~~~java
+hello1 == hello2      : false
+hello1.equals(hello2) : true
+
+hello1 == hello3      : true
+hello1.equals(hello3) : true
+~~~
+
 똑같은 기능의 객체를 매번 생성하기보다는 객체 하나를 재사용하는 편이 나을 때가 많다.  
 재사용은 빠르고 세련되며, 특히 불변 객체는 언제든 재사용할 수 있다.  
 아래에 **안좋은 예시**와 **개선된 예시**를 한번 비교해 보자.
