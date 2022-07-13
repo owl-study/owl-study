@@ -76,7 +76,7 @@ static void copy(String src, String dst) throws IOException {
 }
 ~~~
 
-####  👍 예상치 못한 예외를 놓칠 수 있던 코드 ------- [try-finally 코드 보기]()
+####  👍 예상치 못한 예외를 놓칠 수 있던 코드 ------- [try-finally 코드 보기](https://github.com/leejk0924/owl-study/blob/main/contents/Item_9.md#-%EC%98%88%EC%83%81%EC%B9%98-%EB%AA%BB%ED%95%9C-%EC%98%88%EC%99%B8%EC%97%90%EB%9F%AC%EB%A5%BC-%EB%86%93%EC%B9%A0-%EC%88%98-%EC%9E%88%EB%8B%A4)
 
 ~~~ java
 public static String firstLineOfFile(String path) throw IOException {
