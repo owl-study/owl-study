@@ -59,7 +59,7 @@ public static String firstLineOfFile(String path) throw IOException {
 <br>
 
 ## try-with-resources가 최선의 자원회수 방법이다.
-자바 7에서 처음 등장한 방법으로 사용하기 위해선 [AutoCloseable](#1-AutoCloseable) 인터페이스를 구현해야한다.
+자바 7에서 처음 등장한 방법으로 사용하기 위해선 [AutoCloseable](https://github.com/leejk0924/owl-study/blob/main/contents/Item_9.md#1-autocloseable) 인터페이스를 구현해야한다.
 회수해야 하는 자원을 사용하는 클래스나 인터페이스를 만들어야 한다면 **무조건 AutoCloseable을 구현하고, try-with-resources를 이용하자.**
 
 ### 앞의 코드들을 try-with-resources를 이용한 코드로 수정해 보자.
