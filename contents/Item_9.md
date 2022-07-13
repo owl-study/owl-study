@@ -132,6 +132,6 @@ static String firstLineOfFile (String path, String defaultVal){
 - [lychee.log - [이펙티브 자바 item 9] try-finally보다는 try-with-resources를 사용하라](https://velog.io/@lychee/%EC%9D%B4%ED%8E%99%ED%8B%B0%EB%B8%8C-%EC%9E%90%EB%B0%94-%EC%95%84%EC%9D%B4%ED%85%9C-9.-try-finally-%EB%8C%80%EC%8B%A0-try-with-resources%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC)
 ---
 
-###### [[1]]() AutoCloseable
+###### [[1]](https://github.com/leejk0924/owl-study/blob/main/contents/Item_9.md#try-with-resources%EA%B0%80-%EC%B5%9C%EC%84%A0%EC%9D%98-%EC%9E%90%EC%9B%90%ED%9A%8C%EC%88%98-%EB%B0%A9%EB%B2%95%EC%9D%B4%EB%8B%A4) AutoCloseable
 단순히 void를 반환하는 close 메서드 하나만 덩그러니 정의한 인터페이스.
 이미 수 많은 자바와 서드파티 라이브러리의 클래스와 인터페이스들이 **AutoCloseable**을 구현하거나 확장해 두었다.
