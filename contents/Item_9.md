@@ -64,7 +64,7 @@ public static String firstLineOfFile(String path) throw IOException {
 
 ### 앞의 코드들을 try-with-resources를 이용한 코드로 수정해 보자.
 
-####  👍 반환할 자원이 두개라 복잡했던 코드 --------- [try-finally 코드 보기]()
+####  👍 반환할 자원이 두개라 복잡했던 코드 --------- [try-finally 코드 보기](https://github.com/leejk0924/owl-study/blob/main/contents/Item_9.md#-%EC%9E%90%EC%9B%90%EC%9D%B4-%EB%91%98-%EC%9D%B4%EC%83%81%EC%9D%B4%EB%9D%BC%EB%A9%B4-try-finally-%EB%B0%A9%EC%8B%9D%EC%9D%80-%EB%84%88%EB%AC%B4-%EC%A7%80%EC%A0%80%EB%B6%84%ED%95%98%EB%8B%A4)
 ~~~ java
 static void copy(String src, String dst) throws IOException {
     try (  InputStream in = new FileInputStream(src);
